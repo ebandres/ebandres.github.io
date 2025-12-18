@@ -16,12 +16,25 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      // Adjust the 0.2 value to change the speed (0.1 is slower, 0.5 is faster)
+      const rate = scrolled * 0.2;
+
+      document.body.style.setProperty('--scroll-offset', `${rate}px`);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const renderContent = () => {
     switch (view) {
       case 'programming':
         return (
           <section className="projects-grid">
-            <div>
+            <div className='text-card card-content'>
               <p>Here are a few programming projects I've made, mostly as class assignments or small side projects during University.</p>
             </div>
             {projects.filter(p => p.category === 'programming').map(p => <ProjectCard key={p.id} project={p} setSelected={setSelectedProject} />)}
@@ -74,14 +87,11 @@ function App() {
 
   return (
     <>
-      <div className="full-width-banner">
-        <img src="/images/banner.jpg" alt="Banner" className="banner-image" />
-        <div className="banner-overlay">
-          <h1 onClick={() => setView('about')}>Emmanuel Bandres</h1>
-        </div>
-      </div>
       <div className="app-container">
         <header>
+          <h1 className="main-title" onClick={() => setView('about')}>
+            Emmanuel Bandres
+          </h1>
           <nav>
             <button
               className={view === 'about' ? 'active' : ''}

@@ -21,12 +21,45 @@ main {
 }
 
 body {
-  background-color: var(--bg-dark);
+  margin: 0;
+  min-height: 100vh;
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
-  margin: 0;
-  display: flex;
-  justify-content: center;
+  display: block;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(to bottom,
+      rgba(26, 29, 36, 0.4),
+      rgba(26, 29, 36, 0.9)),
+    url('/images/portfoliobg1.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  will-change: transform;
+  transform: translateY(calc(var(--scroll-offset, 0px) * -1));
+}
+
+.main-title {
+  font-size: 3.5rem;
+  margin-top: 4rem;
+  /* Gives space from the top of the screen */
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  color: var(--text-main);
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.main-title:hover {
+  transform: scale(1.02);
 }
 
 .inline-link {
@@ -46,9 +79,10 @@ body {
 }
 
 .app-container {
+  background: transparent;
   min-height: 100vh;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,35 +97,46 @@ header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   margin-bottom: 2rem;
+  background: transparent;
+  z-index: 10;
 }
 
 nav {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 3rem;
-  width: 600px;
+  width: fit-content;
   max-width: 90vw;
   margin: 1.5rem auto 3rem auto;
-  padding-bottom: 0.5rem;
+  padding: 0.8rem 2.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--card-bg-transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
 nav button {
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
   color: var(--text-dim);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   padding: 0.5rem 0;
   cursor: pointer;
   position: relative;
-  transition: color 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
   white-space: nowrap;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 nav button:hover {
@@ -99,15 +144,24 @@ nav button:hover {
   background: none;
 }
 
+nav button:hover,
+nav button.active {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
 nav button::after {
   content: '';
   position: absolute;
-  bottom: -0.5rem;
+  bottom: -0.9rem;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 4px;
   background-color: var(--accent-dev);
   transition: width 0.3s ease;
+}
+
+nav button.active[data-view="game"] {
+  text-shadow: 0 0 12px rgba(108, 247, 103, 0.3), 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 nav button.active[data-view="game"]::after {
@@ -121,6 +175,21 @@ nav button.active {
 
 nav button.active::after {
   width: 100%;
+}
+
+nav button+button {
+  position: relative;
+}
+
+nav button+button::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 1.2rem;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 button {
@@ -145,32 +214,41 @@ button.active {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
 
 .about-section {
   max-width: 800px;
+  border-radius: 20px;
+  margin: 2rem auto;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  padding: 3rem;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .cv-section {
-  width: 100%;
+  width: 90%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem auto;
   background: var(--card-bg);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 3rem;
+  text-align: center;
   box-sizing: border-box;
   overflow: hidden;
-  position: relative;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-.cv-section, .about-section, .projects-grid {
+.cv-section,
+.about-section,
+.projects-grid {
   width: 100%;
-  max-width: 100%; 
+  max-width: 100%;
 }
 
 .projects-grid {
@@ -183,7 +261,8 @@ button.active {
   margin: 0 auto;
 }
 
-.project-card {
+.project-card,
+.text-card {
   background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
@@ -193,6 +272,15 @@ button.active {
   flex-direction: column;
   text-align: left;
   cursor: pointer;
+}
+
+.project-card,
+.text-card,
+.cv-section,
+.about-section {
+  background: rgba(44, 49, 58, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-image-container {
@@ -215,12 +303,17 @@ button.active {
   padding: 1.5rem;
 }
 
-.dev-card { border-top: 4px solid var(--accent-dev); }
-.game-card { border-top: 4px solid var(--accent-game); }
+.dev-card {
+  border-top: 4px solid var(--accent-dev);
+}
+
+.game-card {
+  border-top: 4px solid var(--accent-game);
+}
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 .tech-stack {
@@ -234,9 +327,9 @@ button.active {
   background: rgba(56, 189, 248, 0.1);
   color: var(--accent-dev);
   border: 1px solid rgba(56, 191, 248, 0.3);
-  
-  padding: 0.4rem 0.8rem; 
-  
+
+  padding: 0.4rem 0.8rem;
+
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 500;
@@ -273,7 +366,7 @@ button.active {
   width: 100%;
   height: 100%;
   background: var(--modal-blur-bg);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -284,7 +377,7 @@ button.active {
 .modal-content {
   position: relative;
   background: var(--card-bg);
-  padding: 0; 
+  padding: 0;
   border-radius: 20px;
   max-width: 850px;
   width: 90%;
@@ -420,57 +513,7 @@ button.active {
 }
 
 .download-btn:hover {
-  color: var(--text-main); 
-}
-
-.full-width-banner {
-  position: relative;
-  width: 100vw;
-  height: 350px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
-
-.banner-container {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 20px;
-  margin-bottom: 2rem;
-}
-
-.banner-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.banner-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 23, 42, 0.3),
-    var(--bg-dark)
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.banner-overlay h1 {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  color: white;
-  cursor: pointer;
-  text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  color: var(--text-main);
 }
 
 .footer {
@@ -507,11 +550,24 @@ button.active {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
+
+  .main-title {
+    font-size: 2.2rem;
+    margin-top: 2rem;
+  }
+
   .app-container {
     padding: 0 15px;
   }
@@ -519,12 +575,6 @@ button.active {
   .about-section {
     padding: 0 1.5rem;
     text-align: center;
-  }
-
-  .banner-overlay h1 {
-    font-size: 1.8rem;
-    text-align: center;
-    padding: 0 10px;
   }
 
   .projects-grid {
@@ -536,25 +586,36 @@ button.active {
   }
 
   .project-card {
-    width: 100% !important; 
+    width: 100% !important;
     max-width: 100%;
     margin: 0;
     box-sizing: border-box;
   }
 
   nav {
-    min-width: 100% !important;
     gap: 1rem;
-    flex-wrap: wrap;
+    padding: 0.6rem 1.2rem;
+    width: 95%;
+    margin: 1rem auto 2rem auto;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+  }
+
+  nav button {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+
+  nav button::after {
+    bottom: -0.75rem;
+  }
+
+  nav button + button::before {
+    left: -1rem;
   }
 
   .separator-line {
     width: 90% !important;
-  }
-
-  .banner-overlay h1 {
-    font-size: 2rem;
-    letter-spacing: 2px;
   }
 
   .modal-content {
@@ -573,7 +634,8 @@ button.active {
     box-sizing: border-box;
   }
 
-  .cv-grid, .experience-item {
+  .cv-grid,
+  .experience-item {
     display: flex;
     flex-direction: column;
     gap: 10px;
