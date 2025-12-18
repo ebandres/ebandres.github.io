@@ -57,10 +57,11 @@ function App() {
           <section className="about-section">
             <h2>Hello!</h2>
             <p>
-              I'm Emmanuel, a computer engineer with 3 years of <span className="inline-link" onClick={() => setView('cv')}>experience</span>.
+              I'm Emmanuel, a game designer and computer engineer!
             </p>
             <p>
-              I'm also a game designer who loves programming and making <span className="inline-link" onClick={() => setView('game')}>fun games</span>.
+              With three years of <span className="inline-link" onClick={() => setView('cv')}>hands-on full-stack development experience</span> and a passion for making <span className="inline-link" onClick={() => setView('game')}>fun and interesting games</span>,
+              I blend solid software engineering fundamentals with creative gameplay mechanics. My work spans scalable web applications and interactive experiences that prioritize performance, clean architecture, and player enjoyment.
             </p>
             <p>
               You can check out my <span className="inline-link" onClick={() => setView('programming')}>other projects here </span>
