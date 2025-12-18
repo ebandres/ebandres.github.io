@@ -21,6 +21,9 @@ function App() {
       case 'programming':
         return (
           <section className="projects-grid">
+            <div>
+              <p>Here are a few programming projects I've made, mostly as class assignments or small side projects during University.</p>
+            </div>
             {projects.filter(p => p.category === 'programming').map(p => <ProjectCard key={p.id} project={p} setSelected={setSelectedProject} />)}
           </section>
         );
@@ -104,17 +107,25 @@ function App() {
             <div className={`modal-content ${selectedProject.category === 'game' ? 'game-modal' : ''}`} onClick={(e) => e.stopPropagation()}>
               <button className="close-btn" onClick={() => setSelectedProject(null)} aria-label="Close">
               </button>
-              {selectedProject.image && <img src={selectedProject.image} alt={selectedProject.title} className="modal-img" />}
-              <h2>{selectedProject.title}</h2>
-              <p className="modal-desc">{selectedProject.longDescription || selectedProject.description}</p>
+              <div className="modal-scroll-area">
+                {selectedProject.image && <img src={selectedProject.image} alt={selectedProject.title} className="modal-img" />}
+                <h2>{selectedProject.title}</h2>
+                <p className="modal-desc">
+                  {selectedProject.longDescription.map((paragraph, index) => (
+                    <p key={index} style={{ marginBottom: '1rem' }}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </p>
 
-              <div className="modal-tech">
-                {selectedProject.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
-              </div>
+                <div className="modal-tech">
+                  {selectedProject.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
+                </div>
 
-              <div className="modal-actions">
-                {selectedProject.link && <a href={selectedProject.link} target="_blank" className="btn-primary">View Source</a>}
-                {selectedProject.demo && <a href={selectedProject.demo} target="_blank" className="btn-secondary">Live Demo</a>}
+                <div className="modal-actions">
+                  {selectedProject.link && <a href={selectedProject.link} target="_blank" className="btn-primary">View Source</a>}
+                  {selectedProject.demo && <a href={selectedProject.demo} target="_blank" className="btn-secondary">Play it here!</a>}
+                </div>
               </div>
             </div>
           </div>
@@ -122,11 +133,12 @@ function App() {
 
         <footer className="footer">
           <div className="footer-content">
-            <p>&copy; {new Date().getFullYear()} Emmanuel Bandres.</p>
+            <p>&copy; {new Date().getFullYear()} Emmanuel Bandres</p>
             <div className="footer-links">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="mailto:your@email.com">Contact</a>
+              <a href="https://github.com/ebandres" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://linkedin.com/in/emmanuel-bandres/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://mcgrock.itch.io/" target="_blank" rel="noopener noreferrer">itch.io</a>
+              {/* <a href="mailto:your@email.com">Contact</a> */}
             </div>
           </div>
         </footer>

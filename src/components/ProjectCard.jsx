@@ -11,7 +11,7 @@ const ProjectCard = ({ project, setSelected }) => {
       {/* If there is no image, it just won't render this div */}
       {project.image && (
         <div className="card-image-container">
-          <img src={project.image} alt={project.title} />
+          <img src={project.thumb} alt={project.title} />
         </div>
       )}
       
