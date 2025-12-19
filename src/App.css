@@ -177,7 +177,7 @@ nav button::after {
 }
 
 nav button.active[data-view="game"] {
-  text-shadow: 0 0 12px rgba(108, 247, 103, 0.3), 0 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 12px rgba(247, 189, 103, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 nav button.active[data-view="game"]::after {

@@ -141,10 +141,10 @@ function App() {
                     <span className="skill-badge game">GIMP</span>
                     <span className="skill-badge game">Krita</span>
                     <span className="skill-badge game">Inkscape</span>
+                    <span className="skill-badge game">Balsamiq</span>
                     <span className="skill-badge dev">React</span>
                     <span className="skill-badge dev">Git</span>
                     <span className="skill-badge dev">PostgreSQL</span>
-                    <span className="skill-badge dev">Balsamiq</span>
                     <span className="skill-badge dev">Trello</span>
                     <span className="skill-badge dev">Miro</span>
                     <span className="skill-badge dev">Spring Boot</span>
