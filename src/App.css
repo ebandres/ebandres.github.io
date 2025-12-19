@@ -7,9 +7,9 @@
   --text-main: #f8fafc;
   --text-dim: #94a3b8;
   --accent-dev: #869ea8;
-  --accent-game: #6cf767;
-  --badge-bg-dev: rgba(56, 189, 248, 0.1);
-  --badge-bg-game: rgba(108, 247, 103, 0.1);
+  --accent-game: #f3a040;
+  --badge-bg-dev: rgba(36, 119, 155, 0.1);
+  --badge-bg-game: rgba(247, 209, 103, 0.1);
 }
 
 html {
@@ -35,7 +35,7 @@ body::before {
   top: 0;
   left: 0;
   width: 100%;
-  height: 120%;
+  height: 110vh;
   background: linear-gradient(to bottom,
       rgba(26, 29, 36, 0.4),
       rgba(26, 29, 36, 0.9)),
@@ -44,7 +44,23 @@ body::before {
   background-position: center;
   z-index: -1;
   will-change: transform;
-  transform: translateY(calc(var(--scroll-offset, 0px) * -1));
+  transform: translateY(clamp(-10vh, calc(var(--scroll-offset, 0px) * -0.1), 0px));
+}
+
+.icon-github {
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  mask: url('/github-mark-white.svg') no-repeat center / contain;
+  -webkit-mask: url('/github-mark-white.svg') no-repeat center / contain;
+}
+
+.icon-itchio {
+  width: 18px;
+  height: 18px;
+  background-color: currentColor;
+  mask: url('/itchio-logo-textless-white.svg') no-repeat center / contain;
+  -webkit-mask: url('/itchio-logo-textless-white.svg') no-repeat center / contain;
 }
 
 .main-title {
@@ -336,6 +352,48 @@ button.active {
   white-space: nowrap;
 }
 
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.modal-header h2 {
+  margin: 0;
+  flex: 1;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0 !important;
+}
+
+.modal-actions a {
+  display: inline-flex !important; 
+  flex-direction: row !important;
+  align-items: center; 
+  justify-content: center;
+  gap: 10px; 
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.modal-actions a svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.modal-actions a:hover svg {
+  transform: translateY(-2px);
+}
+
 .modal-tech {
   display: flex;
   flex-wrap: wrap;
@@ -454,6 +512,16 @@ button.active {
   display: block;
 }
 
+.btn-primary {
+  background: var(--accent-dev);
+  color: #1a1d24 !important;
+}
+
+.btn-secondary {
+  background: var(--accent-game);
+  color: var(--card-bg) !important;
+}
+
 .close-btn {
   position: absolute;
   top: 1.5rem;
@@ -523,6 +591,25 @@ button.active {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.footer-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover .footer-icon {
+  opacity: 1;
+  transform: translateY(-3px);
+  filter: drop-shadow(0 0 8px var(--accent-dev));
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -547,6 +634,170 @@ button.active {
 
 .footer-links a:hover {
   color: var(--text-main);
+}
+
+.cv-timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 2rem auto;
+  text-align: left;
+  padding-left: 20px;
+}
+
+/* The vertical line */
+.cv-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.18rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-category {
+  color: var(--accent-dev);
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin: 2rem 0 1.5rem 0;
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+/* The Dot */
+.timeline-dot {
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-dev);
+  border: 3px solid var(--card-bg);
+  z-index: 2;
+}
+
+.timeline-content h4 {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.timeline-content h5 {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin: 0 0 0.5rem 0;
+}
+
+.timeline-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0 0 0;
+}
+
+.timeline-content li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Achievement Bullet Points */
+.timeline-content li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-dev);
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+.timeline-item:hover .timeline-dot {
+  background: var(--accent-game);
+  box-shadow: 0 0 10px var(--accent-game);
+  transform: scale(1.2);
+  border-color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content h5,
+.timeline-item:hover .timeline-content h4 {
+  color: var(--accent-game);
+  transition: color 0.3s ease;
+}
+
+.timeline-item:hover::after {
+  opacity: 0.5;
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+.timeline-item:hover li {
+  color: var(--text-main);
+  transform: translateX(5px);
+}
+
+.skills-container {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.skill-group h4 {
+  color: var(--text-main);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skill-badge {
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.skill-badge.game:hover {
+  border-color: var(--accent-game);
+  color: var(--accent-game);
+  background: var(--badge-bg-game);
+}
+
+.skill-badge.dev:hover {
+  border-color: var(--accent-dev);
+  color: var(--accent-dev);
+  background: var(--badge-bg-dev);
 }
 
 @keyframes fadeIn {
@@ -650,5 +901,22 @@ button.active {
 
   .footer-links {
     gap: 1.5rem;
+  }
+
+  .modal-header {
+    flex-direction: column;
+    align-items: flex-start; /* Aligns everything to the left */
+    gap: 1rem;
+  }
+
+  .modal-actions {
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .modal-actions a {
+    width: 100%; /* Full width buttons for easier tapping */
+    box-sizing: border-box;
   }
 }

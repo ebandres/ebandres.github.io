@@ -76,7 +76,7 @@ export const projects = [
     id: 7,
     title: "Connect 4 Solver",
     category: "programming",
-    description: "Polynomial interpolator using ADALINE.",
+    description: "Connect 4 Solver with multiple algorithm options.",
     longDescription: ["Searches for optimal solutions for Connect 4 game trees.",
       "The Monte Carlo Tree Search and Negamax algorithms were implemented with alpha-beta pruning and transposition tables.",
       "Written in C++."

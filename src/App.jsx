@@ -49,19 +49,113 @@ function App() {
       case 'cv':
         return (
           <section className="cv-section">
-            <h2 className="cv-title">Curriculum Vitae</h2>
-            <div className="cv-content">
-              <div className="cv-group">
-                <h3>Experience</h3>
-                <p>Your job role here - Company (Date)</p>
+            <h2 className="cv-title">Experience & Education</h2>
+            <div className="cv-timeline">
+              <div className="timeline-group">
+                <h3 className="timeline-category">Work</h3>
+
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>October 2024 - Present</h4>
+                    <h5>Senior Full-Stack Developer at Mega Soft Computación</h5>
+                    <ul>
+                      <li>Led development of scalable web architectures using modern frameworks.</li>
+                      <li>Optimized database queries, reducing load times by ~80% and improving responsiveness under high load.</li>
+                      <li>Mentored junior developers and performed code reviews.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>August 2022 - October 2024</h4>
+                    <h5>Junior Full-Stack Developer at Mega Soft Computación</h5>
+                    <ul>
+                      <li>Designed, developed and maintained features for core business intelligence applications.</li>
+                      <li>Implemented various ETL processes in Python to manipulate and store information into a centralized database</li>
+                      <li>Implemented responsive front-end components.</li>
+                      <li>Implemented several services in a REST API that generate administrative and business reports for end users.</li>
+                      <li>Designed and implemented a user permission system with multiple types of users and roles for each type.</li>
+                      <li>Assisted in the migration of legacy systems to modern solutions.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div className="cv-group" style={{ marginTop: '2rem' }}>
-                <h3>Education</h3>
-                <p>Degree Name - University</p>
+
+              <div className="timeline-group">
+                <h3 className="timeline-category">Education</h3>
+
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>July 2024</h4>
+                    <h5>Master's in Video Game Design</h5>
+                    <p>Universidad Europea de Madrid</p>
+                    <ul>
+                      <li>Completed a capstone project involving the design and development of a roguelike cooking card game.</li>
+                      <li>Showcased the project at multiple video game developer conferences.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>July 2023</h4>
+                    <h5>Computer Engineering</h5>
+                    <p>Universidad Simón Bolívar</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <a href="/resume.pdf" download className="download-btn">
-              Download PDF Version
+
+            <div className="skills-container">
+              <h3 className="timeline-category">Technical Skills</h3>
+
+              <div className="skills-grid">
+                <div className="skill-group">
+                  <h4>Engines</h4>
+                  <div className="skill-badges">
+                    <span className="skill-badge game">Unity</span>
+                    <span className="skill-badge game">Unreal Engine 5</span>
+                  </div>
+                </div>
+
+                <div className="skill-group">
+                  <h4>Languages</h4>
+                  <div className="skill-badges">
+                    <span className="skill-badge dev">Java</span>
+                    <span className="skill-badge dev">Python</span>
+                    <span className="skill-badge dev">JavaScript</span>
+                    <span className="skill-badge dev">C#</span>
+                    <span className="skill-badge dev">C++</span>
+                    <span className="skill-badge dev">C</span>
+                  </div>
+                </div>
+
+                <div className="skill-group">
+                  <h4>Tools & Tech</h4>
+                  <div className="skill-badges">
+                    <span className="skill-badge game">GIMP</span>
+                    <span className="skill-badge game">Krita</span>
+                    <span className="skill-badge game">Inkscape</span>
+                    <span className="skill-badge dev">React</span>
+                    <span className="skill-badge dev">Git</span>
+                    <span className="skill-badge dev">PostgreSQL</span>
+                    <span className="skill-badge dev">Balsamiq</span>
+                    <span className="skill-badge dev">Trello</span>
+                    <span className="skill-badge dev">Miro</span>
+                    <span className="skill-badge dev">Spring Boot</span>
+                    <span className="skill-badge dev">pandas</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="/EN CV Emmanuel Bandres 2026.pdf" download className="download-btn">
+              Download Resume
             </a>
           </section>
         );
@@ -105,7 +199,7 @@ function App() {
               onClick={() => setView('programming')}>Other Stuff</button>
             <button
               className={view === 'cv' ? 'active' : ''}
-              onClick={() => setView('cv')}>CV</button>
+              onClick={() => setView('cv')}>Resume</button>
           </nav>
         </header>
 
@@ -120,7 +214,25 @@ function App() {
               </button>
               <div className="modal-scroll-area">
                 {selectedProject.image && <img src={selectedProject.image} alt={selectedProject.title} className="modal-img" />}
-                <h2>{selectedProject.title}</h2>
+                <div className="modal-header">
+                  <h2>{selectedProject.title}</h2>
+                  <div className="modal-actions">
+                    {selectedProject.link && (
+                      <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                        <span className="icon-github"></span>
+                        <span>View Source</span>
+                      </a>
+                    )}
+
+                    {selectedProject.demo && (
+                      <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                        <span className="icon-itchio"></span>
+                        <span>Play it here!</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+
                 <p className="modal-desc">
                   {selectedProject.longDescription.map((paragraph, index) => (
                     <p key={index} style={{ marginBottom: '1rem' }}>
@@ -132,11 +244,6 @@ function App() {
                 <div className="modal-tech">
                   {selectedProject.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
                 </div>
-
-                <div className="modal-actions">
-                  {selectedProject.link && <a href={selectedProject.link} target="_blank" className="btn-primary">View Source</a>}
-                  {selectedProject.demo && <a href={selectedProject.demo} target="_blank" className="btn-secondary">Play it here!</a>}
-                </div>
               </div>
             </div>
           </div>
@@ -146,10 +253,18 @@ function App() {
           <div className="footer-content">
             <p>&copy; {new Date().getFullYear()} Emmanuel Bandres</p>
             <div className="footer-links">
-              <a href="https://github.com/ebandres" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://linkedin.com/in/emmanuel-bandres/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://mcgrock.itch.io/" target="_blank" rel="noopener noreferrer">itch.io</a>
-              {/* <a href="mailto:your@email.com">Contact</a> */}
+              <a href="https://github.com/ebandres" target="_blank" rel="noopener noreferrer">
+                <img src="/github-mark-white.svg" alt="GitHub" className="footer-icon" />
+              </a>
+              <a href="https://linkedin.com/in/emmanuel-bandres/" target="_blank" rel="noopener noreferrer">
+                <img src="/linkedinlogo.svg" alt="LinkedIn" className="footer-icon" />
+              </a>
+              <a href="https://mcgrock.itch.io/" target="_blank" rel="noopener noreferrer">
+                <img src="/itchio-logo-textless-white.svg" alt="itch.io" className="footer-icon" />
+              </a>
+              <a href="mailto:contact@emmanuelbandres.com">
+                <img src="/email-svgrepo-com.svg" alt="Contact" className="footer-icon" />
+              </a>
             </div>
           </div>
         </footer>
