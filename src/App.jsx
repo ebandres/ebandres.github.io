@@ -37,18 +37,30 @@ function App() {
             <div className='text-card card-content'>
               <p>Here are a few programming projects I've made, mostly as class assignments or small side projects during University.</p>
             </div>
-            {projects.filter(p => p.category === 'programming').map(p => <ProjectCard key={p.id} project={p} setSelected={setSelectedProject} />)}
+            {projects
+              .filter(p => p.category === 'programming')
+              .map((p, i) =>
+                <ProjectCard key={p.id} project={p} setSelected={setSelectedProject} index={i} />
+              )}
           </section>
         );
       case 'game':
         return (
           <section className="projects-grid games-grid">
-            {projects.filter(p => p.category === 'game').map(p => <ProjectCard key={p.id} project={p} setSelected={setSelectedProject} />)}
+            {projects
+              .filter(p => p.category === 'game')
+              .map((p, i) =>
+                <ProjectCard key={p.id} project={p} setSelected={setSelectedProject} index={i} />
+              )}
           </section>
         );
       case 'cv':
         return (
           <section className="cv-section">
+            <a href="/EN CV Emmanuel Bandres 2026.pdf" download className="download-btn">
+              <span src="/download.svg" alt="" className="btn-icon"></span>
+              <span>Download Resume</span>
+            </a>
             <h2 className="cv-title">Experience & Education</h2>
             <div className="cv-timeline">
               <div className="timeline-group">
@@ -153,10 +165,6 @@ function App() {
                 </div>
               </div>
             </div>
-
-            <a href="/EN CV Emmanuel Bandres 2026.pdf" download className="download-btn">
-              Download Resume
-            </a>
           </section>
         );
       default:
@@ -204,7 +212,9 @@ function App() {
         </header>
 
         <main className="content-area">
-          {renderContent()}
+          <div className="fade-wrapper" key={view}>
+            {renderContent()}
+          </div>
         </main>
 
         {selectedProject && (

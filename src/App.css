@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans:wght@300;400;500;600&display=swap');
+
 :root {
   --bg-dark: #1a1d24;
   --card-bg: #2c313a;
@@ -10,6 +12,8 @@
   --accent-game: #f3a040;
   --badge-bg-dev: rgba(36, 119, 155, 0.1);
   --badge-bg-game: rgba(247, 209, 103, 0.1);
+  --font-header: 'Syne', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
 }
 
 html {
@@ -27,6 +31,8 @@ body {
   font-family: 'Inter', sans-serif;
   display: block;
   overflow-x: hidden;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
 
 body::before {
@@ -66,16 +72,36 @@ body::before {
 .main-title {
   font-size: 3.5rem;
   margin-top: 4rem;
-  /* Gives space from the top of the screen */
   margin-bottom: 0.5rem;
   cursor: pointer;
   color: var(--text-main);
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
   transition: transform 0.3s ease;
+  font-family: var(--font-header);
+  font-weight: normal;
 }
 
 .main-title:hover {
   transform: scale(1.02);
+}
+
+h1, h2, h3, .cv-title, .timeline-category {
+  font-family: var(--font-header);
+  font-weight: 700;
+}
+
+p, .modal-desc, .timeline-content {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.01rem;
+}
+
+.tech-badge, .btn-primary, .btn-secondary, .nav-button {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05rem;
 }
 
 .inline-link {
@@ -86,6 +112,7 @@ body::before {
   transition: all 0.2s ease;
   margin-right: 0;
   display: inline;
+  border-bottom: 2px solid var(--accent-dev);
 }
 
 .inline-link:hover {
@@ -319,6 +346,12 @@ button.active {
   padding: 1.5rem;
 }
 
+.card-content h3 {
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
 .dev-card {
   border-top: 4px solid var(--accent-dev);
 }
@@ -340,12 +373,10 @@ button.active {
 }
 
 .tech-badge {
-  background: rgba(56, 189, 248, 0.1);
+  background: var(--badge-bg-dev);
   color: var(--accent-dev);
-  border: 1px solid rgba(56, 191, 248, 0.3);
-
+  border: 1px solid var(--accent-dev);
   padding: 0.4rem 0.8rem;
-
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 500;
@@ -412,9 +443,9 @@ button.active {
 
 .games-grid .tech-badge,
 .game-modal .tech-badge {
-  background: rgba(52, 211, 92, 0.15);
-  color: #88d498;
-  border: 1px solid rgba(52, 211, 78, 0.3);
+  background: var(--badge-bg-game);
+  color: var(--accent-game);
+  border: 1px solid var(--accent-game);
 }
 
 .modal-overlay {
@@ -568,20 +599,39 @@ button.active {
 }
 
 .download-btn {
-  display: inline-block;
+  display: inline-flex;
   margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   padding: 0.8rem 0rem;
   color: var(--accent-dev);
   background: transparent;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
+  font-family: var(--font-header);
+  font-weight: 700;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .download-btn:hover {
+  transform: translateY(-3px);
   color: var(--text-main);
+}
+
+.download-btn .btn-icon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(-1px);
+  background-color: var(--accent-dev);
+  mask: url('/download.svg') no-repeat center / contain;
+  -webkit-mask: url('/download.svg') no-repeat center / contain;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover .btn-icon {
+  background-color: var(--text-main);
 }
 
 .footer {
@@ -810,6 +860,35 @@ button.active {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.fade-wrapper {
+  animation: fadeIn 0.4s ease-out forwards;
+  width: 100%;
+}
+
+.content-area {
+  min-height: 60vh;
+}
+
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card {
+  opacity: 0; /* Start invisible */
+  animation: cardPop 0.5s ease-out forwards;
+  
+  /* Each card waits 0.1 seconds multiplied by its index */
+  /* Card 0 waits 0s, Card 1 waits 0.1s, Card 2 waits 0.2s, etc. */
+  animation-delay: calc(var(--stagger) * 0.1s);
 }
 
 @media (max-width: 768px) {

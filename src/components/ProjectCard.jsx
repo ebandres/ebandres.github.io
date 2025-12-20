@@ -1,12 +1,13 @@
 import React from 'react';
 
-const ProjectCard = ({ project, setSelected }) => {
+const ProjectCard = ({ project, setSelected, index }) => {
   const isGame = project.category === 'game';
 
   return (
     <div 
-      className={`project-card ${isGame ? 'game-card' : 'dev-card'}`} 
+      className={`project-card animate-card ${isGame ? 'game-card' : 'dev-card'}`} 
       onClick={() => setSelected(project)}
+      style={{ '--stagger': index }}
     >
       {/* If there is no image, it just won't render this div */}
       {project.image && (
