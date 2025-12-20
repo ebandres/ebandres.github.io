@@ -41,7 +41,7 @@ export const projects = [
     id: 4,
     title: "Los Ojos Verdes",
     category: "game",
-    description: "Fight for the sweetest victory this Halloween!",
+    description: "A short adaptation of Gustavo Adolfo Bécquer's 1861 story.",
     thumb: "/images/ojosverdes-thumb.png",
     image: "/images/ojosverdes-preview.png",
     longDescription: ["Made for the Cultura Abierta Game Jam. This was the first game I ever made with my friends.",
