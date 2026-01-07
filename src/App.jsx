@@ -102,7 +102,7 @@ function App() {
                 <div className="timeline-item">
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
-                    <h4>July 2024</h4>
+                    <h4>July 2025</h4>
                     <h5>Master's in Video Game Design</h5>
                     <p>Universidad Europea de Madrid</p>
                     <ul>
