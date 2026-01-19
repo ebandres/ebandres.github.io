@@ -66,7 +66,7 @@ function App() {
               <h2 className="cv-title">Technical Skills</h2>
 
               <div className="skills-grid">
-                
+
                 <div className="skill-group">
                   <h4>Tools & Tech</h4>
                   <div className="skill-badges">
@@ -82,6 +82,7 @@ function App() {
                     <span className="skill-badge dev">Spring Boot</span>
                     <span className="skill-badge dev">JWT</span>
                     <span className="skill-badge dev">Hibernate</span>
+                    <span className="skill-badge dev">Swagger</span>
                     <span className="skill-badge dev">RabbitMQ</span>
                     <span className="skill-badge dev">JUnit</span>
                     <span className="skill-badge dev">Mockito</span>
