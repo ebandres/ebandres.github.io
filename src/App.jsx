@@ -61,6 +61,58 @@ function App() {
               <span src="/download.svg" alt="" className="btn-icon"></span>
               <span>Download Resume</span>
             </a>
+
+            <div className="skills-container">
+              <h2 className="cv-title">Technical Skills</h2>
+
+              <div className="skills-grid">
+                
+                <div className="skill-group">
+                  <h4>Tools & Tech</h4>
+                  <div className="skill-badges">
+                    <span className="skill-badge game">GIMP</span>
+                    <span className="skill-badge game">Krita</span>
+                    <span className="skill-badge game">Inkscape</span>
+                    <span className="skill-badge game">Balsamiq</span>
+                    <span className="skill-badge dev">React</span>
+                    <span className="skill-badge dev">Git</span>
+                    <span className="skill-badge dev">PostgreSQL</span>
+                    <span className="skill-badge dev">Trello</span>
+                    <span className="skill-badge dev">Miro</span>
+                    <span className="skill-badge dev">Spring Boot</span>
+                    <span className="skill-badge dev">JWT</span>
+                    <span className="skill-badge dev">Hibernate</span>
+                    <span className="skill-badge dev">RabbitMQ</span>
+                    <span className="skill-badge dev">JUnit</span>
+                    <span className="skill-badge dev">Mockito</span>
+                    <span className="skill-badge dev">pandas</span>
+                  </div>
+                </div>
+
+                <div className="skill-group">
+                  <h4>Languages</h4>
+                  <div className="skill-badges">
+                    <span className="skill-badge dev">Java</span>
+                    <span className="skill-badge dev">Python</span>
+                    <span className="skill-badge dev">JavaScript</span>
+                    <span className="skill-badge dev">TypeScript</span>
+                    <span className="skill-badge dev">C#</span>
+                    <span className="skill-badge dev">C++</span>
+                    <span className="skill-badge dev">C</span>
+                  </div>
+                </div>
+
+                <div className="skill-group">
+                  <h4>Engines</h4>
+                  <div className="skill-badges">
+                    <span className="skill-badge game">Unity</span>
+                    <span className="skill-badge game">Unreal Engine 5</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
             <h2 className="cv-title">Experience & Education</h2>
             <div className="cv-timeline">
               <div className="timeline-group">
@@ -118,49 +170,6 @@ function App() {
                     <h4>July 2023</h4>
                     <h5>Computer Engineering</h5>
                     <p>Universidad Simón Bolívar</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="skills-container">
-              <h3 className="timeline-category">Technical Skills</h3>
-
-              <div className="skills-grid">
-                <div className="skill-group">
-                  <h4>Engines</h4>
-                  <div className="skill-badges">
-                    <span className="skill-badge game">Unity</span>
-                    <span className="skill-badge game">Unreal Engine 5</span>
-                  </div>
-                </div>
-
-                <div className="skill-group">
-                  <h4>Languages</h4>
-                  <div className="skill-badges">
-                    <span className="skill-badge dev">Java</span>
-                    <span className="skill-badge dev">Python</span>
-                    <span className="skill-badge dev">JavaScript</span>
-                    <span className="skill-badge dev">C#</span>
-                    <span className="skill-badge dev">C++</span>
-                    <span className="skill-badge dev">C</span>
-                  </div>
-                </div>
-
-                <div className="skill-group">
-                  <h4>Tools & Tech</h4>
-                  <div className="skill-badges">
-                    <span className="skill-badge game">GIMP</span>
-                    <span className="skill-badge game">Krita</span>
-                    <span className="skill-badge game">Inkscape</span>
-                    <span className="skill-badge game">Balsamiq</span>
-                    <span className="skill-badge dev">React</span>
-                    <span className="skill-badge dev">Git</span>
-                    <span className="skill-badge dev">PostgreSQL</span>
-                    <span className="skill-badge dev">Trello</span>
-                    <span className="skill-badge dev">Miro</span>
-                    <span className="skill-badge dev">Spring Boot</span>
-                    <span className="skill-badge dev">pandas</span>
                   </div>
                 </div>
               </div>

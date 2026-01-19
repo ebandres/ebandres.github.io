@@ -801,9 +801,12 @@ button.active {
 }
 
 .skills-container {
-  margin-top: 4rem;
-  padding-top: 2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .skills-grid {
